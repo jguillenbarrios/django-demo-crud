@@ -20,7 +20,7 @@ jobs:
     - name: Set up Python version
       uses: actions/setup-python@v1
       with:
-        python-version: '3.6'
+        python-version: '3.7'
 
     - name: Create and start virtual environment
       run: |
@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'azure-django-demo-lp'
           slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_21276a6a03284892bfe70506574931db }}
+          publish-profile: ${{ secrets.AzureAppService_PublishProfile_6e49bd8eeb82463fbabf368d7d222d6e }}
