@@ -1,0 +1,53 @@
+{% extends "landing_page_register/base.html" %} {% block content %}
+
+<table class="table table-borderless">
+  <thead class="border-bottom font-weight-bold">
+    <tr>
+      <td>Dashboad Name</td>
+      <!--<td>Description</td> -->
+      <!--<td>Link</td> -->
+      <!--<td>Business Unit</td>-->
+      <!--<td>Source</td>-->
+      <td>Owner</td>
+      <td>
+        <a href="{% url 'dashboard_insert' %}" class="btn btn-outline-success">
+          <i class="fas fa-plus"></i> Add New
+        </a>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for dashboard in dashoard_list %}
+    <tr>
+      <td>{{dashboard.dashboard_tag|safe}}</td>
+      {% comment %}
+      <td>{{dashboard.dashboard_description}}</td>
+      <td>{{dashboard.dashboard_link}}</td>
+      <td>{{dashboard.dashboars_business_unit}}</td>
+      <td>{{dashboard.dashboard_source}}</td>
+      {% endcomment %}
+      <td>{{dashboard.dashboard_owner}}</td>
+      <td>
+        <a
+          href="{% url 'dashboard_update' dashboard.dashboard_id %}"
+          class="btn text-secondary px-0"
+        >
+          <i class="far fa-edit fa-lg"></i>
+        </a>
+        <form
+          action="{% url 'dashboard_delete' dashboard.dashboard_id %}"
+          method="POST"
+          class="d-inline"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn">
+            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+          </button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock content %}

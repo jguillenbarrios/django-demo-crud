@@ -1,0 +1,36 @@
+{% extends "landing_page_register/base.html" %} 
+{% load crispy_forms_tags %}
+
+{% block content %}
+<form action="" method="POST" autocomplete="off">
+  {%csrf_token%}
+
+  {{form.dashboard_name|as_crispy_field}}
+  {{form.dashboard_description|as_crispy_field}}
+  {{form.dashboard_link|as_crispy_field}}
+  {{form.dashboard_owner|as_crispy_field}}
+
+<div class="row">
+  <div class="col-md-4">
+      {{form.dashboard_source|as_crispy_field}}
+  </div>
+   <div class="col-md-8">
+        {{form.dashboars_business_unit|as_crispy_field}}
+  </div>
+  <div class="col-md-12 font-weight-bold">
+        {{form.internal_only|as_crispy_field}}
+  </div>
+</div>
+  <div class="row">
+    <div class="col-md-8">
+      <button type="submit" class="btn btn-success btn-block btn-lg"><i class="fas fa-database"></i> Save</button>
+    </div>
+    <div class="col-md-4">
+      <a href="{% url 'dashboard_list' %}" class="btn btn-secondary btn-block btn-lg">
+        <i class="fas fa-stream"></i> Back to list
+      </a>
+    </div>
+  </div>
+
+</form>
+{% endblock content %}
